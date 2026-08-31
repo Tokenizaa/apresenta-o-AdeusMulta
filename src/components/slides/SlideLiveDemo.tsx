@@ -26,19 +26,17 @@ export const SlideLiveDemo: React.FC<SlideLiveDemoProps> = ({
   revealedCount,
   onItemClick,
 }) => {
-  // Use official platform URL or environment variable
-  const defaultPlatformUrl =
-    (import.meta as any).env?.VITE_ADEUS_MULTA_URL ||
-    'https://ais-pre-jnkwagwbq4viqexx3aiiwf-571082489823.us-east1.run.app';
+  // Hardcoded platform URL requested by the user
+  const PLATFORM_URL = 'https://www.defesai.shop/';
 
-  const [platformUrl, setPlatformUrl] = useState(defaultPlatformUrl);
+  const [platformUrl, setPlatformUrl] = useState(PLATFORM_URL);
   const [isEditingUrl, setIsEditingUrl] = useState(false);
   const [hasOpenedDemo, setHasOpenedDemo] = useState(false);
 
   const handleOpenPlatform = (e: React.MouseEvent) => {
     e.stopPropagation();
     setHasOpenedDemo(true);
-    window.open(platformUrl, '_blank', 'noopener,noreferrer');
+    window.open(platformUrl || PLATFORM_URL, '_blank', 'noopener,noreferrer');
   };
 
   const stepsList = [
