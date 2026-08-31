@@ -31,7 +31,7 @@ export default function App() {
   const getSlideTotalSteps = useCallback((slideIdx: number) => {
     const slide = SLIDES_DATA[slideIdx];
     if (!slide) return 0;
-    if (slide.id === 0) return 5; // Cover: 5 agenda topics
+    if (slide.id === 0) return 4; // Cover: 4 steps
     if (slide.id === 1) return 2; // Problem Size: 2 steps
     if (slide.id === 2) return 4; // Market Demand: 4 steps
     if (slide.id === 3) return 3; // Competitors: 3 models

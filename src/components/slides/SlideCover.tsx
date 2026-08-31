@@ -3,14 +3,13 @@ import { motion } from 'motion/react';
 import { SlideData } from '../../types/presentation';
 import { 
   Shield, 
-  Building, 
-  ArrowRight, 
-  CheckCircle2, 
-  TrendingUp, 
-  Scale, 
-  Sparkles, 
-  Target,
-  FileCheck
+  User, 
+  FileText, 
+  CheckSquare, 
+  FileCheck, 
+  ArrowRight,
+  Sparkles,
+  Building
 } from 'lucide-react';
 
 interface SlideCoverProps {
@@ -24,58 +23,50 @@ export const SlideCover: React.FC<SlideCoverProps> = ({
   revealedCount,
   onItemClick,
 }) => {
-  const agendaItems = [
+  const steps = [
     {
-      id: 'ag1',
+      id: 'step1',
       number: '01',
-      title: 'Tamanho do Problema',
-      desc: 'Volume nacional e assimetria de informação',
-      icon: TrendingUp,
-      badge: 'SENATRAN / RENAINF',
+      title: 'Motorista',
+      desc: 'Recebe a autuação e quer saber se existe algum erro ou motivo para recorrer.',
+      icon: User,
+      badge: 'Início',
     },
     {
-      id: 'ag2',
+      id: 'step2',
       number: '02',
-      title: 'Demanda Real por Recursos',
-      desc: 'Evidências oficiais em órgãos públicos',
-      icon: Scale,
-      badge: 'DNIT • Detran • JARI',
+      title: 'Documentos',
+      desc: 'Informa os dados da multa e anexa a notificação recebida.',
+      icon: FileText,
+      badge: 'Dados',
     },
     {
-      id: 'ag3',
+      id: 'step3',
       number: '03',
-      title: 'Concorrência e Modelos',
-      desc: 'Como o mercado está estruturado hoje',
-      icon: Building,
-      badge: 'Assessoria vs. IA',
+      title: 'Conferência',
+      desc: 'O sistema confere os fatos com a legislação e as regras do Código de Trânsito.',
+      icon: CheckSquare,
+      badge: 'Regras',
     },
     {
-      id: 'ag4',
+      id: 'step4',
       number: '04',
-      title: 'Diferencial Tecnológico',
-      desc: 'Análise estruturada e regras antes da redação',
-      icon: Sparkles,
-      badge: 'Adeus Multa',
-    },
-    {
-      id: 'ag5',
-      number: '05',
-      title: 'Plano de Negócio & Ação',
-      desc: 'Validação comercial e metas de 30 dias',
-      icon: Target,
-      badge: 'Sessão Sebrae',
+      title: 'Defesa',
+      desc: 'Gera o documento de defesa com base nos fundamentos encontrados.',
+      icon: FileCheck,
+      badge: 'Resultado',
     },
   ];
 
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col justify-center min-h-[calc(100vh-200px)] py-4">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Column: Brand, Value Proposition & Meeting Context */}
+        {/* Left Column: Brand & Value Proposition */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="lg:col-span-7 flex flex-col justify-center space-y-6"
+          className="lg:col-span-6 flex flex-col justify-center space-y-6"
         >
           {/* Institutional Gov.br Header Badge */}
           <div className="flex flex-wrap items-center gap-2.5">
@@ -85,83 +76,76 @@ export const SlideCover: React.FC<SlideCoverProps> = ({
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
               <Building className="w-3.5 h-3.5 text-emerald-400" />
-              Sessão Estratégica Sebrae
+              Apresentação Sebrae
             </span>
           </div>
 
-          {/* Main Display Brand Name & Value Statement */}
+          {/* Main Display Brand Name & Subtitle */}
           <div className="space-y-3">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-none">
               ADEUS <span className="text-[#fbbf24]">MULTA</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-slate-100 font-semibold leading-snug max-w-2xl">
+            <p className="text-xl sm:text-2xl text-slate-100 font-semibold leading-snug">
               {slide.subtitle}
             </p>
           </div>
 
-          {/* Executive Value Proposition Box */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-[#0c326f]/60 border-l-4 border-l-[#fbbf24] border-t border-r border-b border-[#1351b4]/60 backdrop-blur-md shadow-xl max-w-2xl space-y-2">
+          {/* High-Contrast Core Value Box */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#0c326f]/60 border-l-4 border-l-[#fbbf24] border-t border-r border-b border-[#1351b4]/60 backdrop-blur-md shadow-xl max-w-xl space-y-2">
             <span className="text-xs font-black uppercase tracking-wider text-emerald-400 block">
-              Proposta de Valor
+              Princípio do Sistema
             </span>
-            <p className="text-base sm:text-lg text-white font-medium leading-relaxed">
-              "Identificar e validar possíveis vícios jurídicos antes de gerar uma defesa técnica consistente e fundamentada."
+            <p className="text-lg sm:text-xl text-white font-bold leading-relaxed">
+              "{slide.highlightQuote || 'Primeiro verificamos as regras. Depois geramos a defesa.'}"
             </p>
           </div>
 
-          {/* Objective of the Meeting & Presenter Prompt */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-1">
-            <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#071d41] border border-slate-700 text-xs text-slate-200">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Apresentação executiva e validação com o Sebrae</span>
-            </div>
-            <span className="text-xs text-slate-400 flex items-center gap-1.5">
-              <span>Pressione</span>
-              <kbd className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[#fbbf24] font-mono">Espaço</kbd>
-              <span>para iniciar a apresentação</span>
-            </span>
+          {/* Interactive Keyboard Cue */}
+          <div className="flex items-center gap-3 text-xs text-slate-300 pt-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Pressione <kbd className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[#fbbf24] font-mono">Espaço</kbd> ou clique nas etapas ao lado para explorar</span>
           </div>
         </motion.div>
 
-        {/* Right Column: Executive Session Agenda */}
+        {/* Right Column: 4 Steps Flow */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-          className="lg:col-span-5 flex flex-col justify-center"
+          className="lg:col-span-6 flex flex-col justify-center"
         >
           <div className="relative p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-[#071d41]/95 to-[#030d1d]/95 border border-[#1351b4]/60 shadow-2xl backdrop-blur-xl">
-            {/* Header of the Agenda */}
+            {/* Header of Flow */}
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#fbbf24]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
-                  Roteiro da Apresentação
+                  Como funciona o sistema
                 </span>
               </div>
               <span className="text-[11px] font-bold text-[#fbbf24] bg-slate-900 px-2.5 py-0.5 rounded border border-slate-700">
-                PAUTA EXECUTIVA
+                FLUXO EM 4 PASSOS
               </span>
             </div>
 
-            {/* 5 Agenda Pillars */}
-            <div className="space-y-2.5">
-              {agendaItems.map((item, index) => {
-                const IconComp = item.icon;
+            {/* 4 Steps Grid */}
+            <div className="space-y-3">
+              {steps.map((step, index) => {
+                const IconComp = step.icon;
                 const isHighlighted = revealedCount >= index + 1;
 
                 return (
                   <div
-                    key={item.id}
+                    key={step.id}
                     onClick={() => onItemClick && onItemClick(index + 1)}
-                    className={`flex items-center gap-3.5 p-3 rounded-xl border transition-all duration-300 cursor-pointer ${
+                    className={`flex items-start gap-3.5 p-3.5 rounded-2xl border transition-all duration-300 cursor-pointer ${
                       isHighlighted
                         ? 'bg-[#0c326f]/80 border-[#2684ff] shadow-md ring-1 ring-[#fbbf24]/30'
                         : 'bg-slate-900/60 border-slate-800 hover:bg-slate-900/90 hover:border-slate-700'
                     }`}
                   >
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
                         isHighlighted
                           ? 'bg-[#fbbf24] text-slate-950 shadow-sm'
                           : 'bg-slate-800 text-slate-300'
@@ -172,15 +156,15 @@ export const SlideCover: React.FC<SlideCoverProps> = ({
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
-                        <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight truncate">
-                          {item.number}. {item.title}
+                        <h4 className="text-sm font-bold text-white tracking-tight">
+                          {step.number}. {step.title}
                         </h4>
-                        <span className="text-[10px] font-mono text-slate-300 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800 shrink-0">
-                          {item.badge}
+                        <span className="text-[10px] font-mono text-slate-300 bg-slate-950 px-2 py-0.5 rounded border border-slate-800 shrink-0">
+                          {step.badge}
                         </span>
                       </div>
-                      <p className="text-[11px] text-slate-300 mt-0.5 truncate">
-                        {item.desc}
+                      <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                        {step.desc}
                       </p>
                     </div>
                   </div>
@@ -188,13 +172,13 @@ export const SlideCover: React.FC<SlideCoverProps> = ({
               })}
             </div>
 
-            {/* Bottom tag */}
+            {/* Bottom Note */}
             <div className="mt-4 pt-3.5 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-300">
-              <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                Apresentação focada e objetiva
+              <span className="flex items-center gap-1 text-emerald-400 font-medium">
+                <Sparkles className="w-3.5 h-3.5" />
+                Tecnologia pronta e funcional
               </span>
-              <span className="text-slate-400 font-mono">5 etapas + Demonstração</span>
+              <span className="text-slate-400 font-mono">Etapa 00 de 07</span>
             </div>
           </div>
         </motion.div>

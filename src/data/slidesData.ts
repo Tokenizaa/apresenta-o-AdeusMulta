@@ -9,47 +9,39 @@ export const SLIDES_DATA: SlideData[] = [
     subtitle: "Tecnologia para análise e defesa de infrações de trânsito",
     topics: [
       {
-        id: "ag1",
+        id: "c1",
         number: "01",
-        title: "Tamanho do Problema",
-        explanation: "Volume expressivo nacional de autuações e a assimetria na identificação de vícios.",
-        iconName: "TrendingUp",
-        badge: "SENATRAN"
+        title: "Motorista",
+        explanation: "Recebe a autuação e quer saber se existe algum erro ou motivo para recorrer.",
+        iconName: "User",
+        badge: "Início"
       },
       {
-        id: "ag2",
+        id: "c2",
         number: "02",
-        title: "Demanda Real por Recursos",
-        explanation: "Evidências e registros públicos de procura em órgãos como DNIT, Detran-GO e JARI-SP.",
-        iconName: "Scale",
-        badge: "Demanda Ativa"
+        title: "Documentos",
+        explanation: "Informa os dados da multa e anexa a notificação recebida.",
+        iconName: "FileText",
+        badge: "Dados"
       },
       {
-        id: "ag3",
+        id: "c3",
         number: "03",
-        title: "Concorrência e Modelos",
-        explanation: "Mapeamento neutro dos modelos de assessoria manual e geradores genéricos de texto.",
-        iconName: "Building",
-        badge: "Mercado"
+        title: "Conferência",
+        explanation: "O sistema confere os fatos com a legislação e as regras do Código de Trânsito.",
+        iconName: "CheckSquare",
+        badge: "Regras"
       },
       {
-        id: "ag4",
+        id: "c4",
         number: "04",
-        title: "Diferencial Tecnológico",
-        explanation: "Análise determinística e validação jurídica antes de qualquer geração de texto.",
-        iconName: "Sparkles",
-        badge: "Adeus Multa"
-      },
-      {
-        id: "ag5",
-        number: "05",
-        title: "Plano de Ação Sebrae",
-        explanation: "Validação do modelo de negócio, plano de testes de 30 dias e painel de gestão integrado.",
-        iconName: "Target",
-        badge: "Gestão"
+        title: "Defesa",
+        explanation: "Gera o documento de defesa com base nos fundamentos encontrados.",
+        iconName: "FileCheck",
+        badge: "Resultado"
       }
     ],
-    highlightQuote: "Identificar e validar possíveis vícios jurídicos antes de gerar uma defesa técnica consistente e fundamentada.",
+    highlightQuote: "Primeiro verificamos as regras. Depois geramos a defesa.",
     presenterNotes: {
       objective: "Apresentar o Adeus Multa de forma direta e prática para a consultora do Sebrae.",
       talkingPoints: [
