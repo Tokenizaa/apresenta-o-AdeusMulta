@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { SlideData } from '../../types/presentation';
-import { DynamicIcon } from '../DynamicIcon';
 import {
   ExternalLink,
   Play,
   ArrowRight,
   ArrowLeft,
-  ShieldCheck,
-  Sparkles,
-  Monitor,
-  FileText,
+  CheckCircle2,
+  Settings,
+  Layers,
   Upload,
   Cpu,
-  CheckCircle2,
-  Layers,
-  Settings,
-  HelpCircle,
-  Eye
+  Search,
+  FileCheck
 } from 'lucide-react';
 
 interface SlideLiveDemoProps {
   slide: SlideData;
-  revealedCount: number; // 0: Initial callout; 1..4: Steps 1..4; 5: Big CTA "AGORA É DEMONSTRAÇÃO AO VIVO"
+  revealedCount: number;
   onItemClick?: (index: number) => void;
 }
 
@@ -34,14 +29,11 @@ export const SlideLiveDemo: React.FC<SlideLiveDemoProps> = ({
   // Use official platform URL or environment variable
   const defaultPlatformUrl =
     (import.meta as any).env?.VITE_ADEUS_MULTA_URL ||
-    (import.meta as any).env?.APP_URL ||
-    'https://adeusmulta.com.br';
+    'https://ais-pre-jnkwagwbq4viqexx3aiiwf-571082489823.us-east1.run.app';
 
   const [platformUrl, setPlatformUrl] = useState(defaultPlatformUrl);
   const [isEditingUrl, setIsEditingUrl] = useState(false);
   const [hasOpenedDemo, setHasOpenedDemo] = useState(false);
-
-  const isFinalDemoActive = revealedCount >= 5;
 
   const handleOpenPlatform = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -49,322 +41,206 @@ export const SlideLiveDemo: React.FC<SlideLiveDemoProps> = ({
     window.open(platformUrl, '_blank', 'noopener,noreferrer');
   };
 
-  // Visual sequence guide to assist the presenter
-  const demoSequence = [
+  const stepsList = [
     {
-      num: '01',
-      step: 'Entrada',
-      desc: 'Dados da infração e informações do usuário',
+      num: '1',
+      title: 'Dados da multa',
+      desc: 'Entrada das informações do auto e do condutor',
       icon: Layers,
     },
     {
-      num: '02',
-      step: 'Documentos',
-      desc: 'Upload e informações relevantes do auto',
+      num: '2',
+      title: 'Documentos',
+      desc: 'Envio da notificação e registros disponíveis',
       icon: Upload,
     },
     {
-      num: '03',
-      step: 'Análise',
-      desc: 'Regras determinísticas + CTB estruturado',
+      num: '3',
+      title: 'Análise',
+      desc: 'Conferência automática das regras e prazos legais',
       icon: Cpu,
     },
     {
-      num: '04',
-      step: 'Resultado',
-      desc: 'Fundamentos jurídicos identificados',
-      icon: CheckCircle2,
+      num: '4',
+      title: 'Fundamentos encontrados',
+      desc: 'Identificação dos pontos passíveis de defesa',
+      icon: Search,
     },
     {
-      num: '05',
-      step: 'Defesa',
-      desc: 'Documento final pronto para protocolo',
-      icon: FileText,
+      num: '5',
+      title: 'Defesa',
+      desc: 'Montagem do documento completo e fundamentado',
+      icon: FileCheck,
     },
   ];
 
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col justify-center min-h-[calc(100vh-200px)] py-4">
-      {/* Slide Header with Live Demo Badge */}
+      {/* Slide Header */}
       <motion.div
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="mb-6 sm:mb-8"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
-            <span className="px-3.5 py-1 text-xs font-extrabold tracking-wider uppercase rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 shadow-sm flex items-center gap-1.5 animate-pulse">
+            <span className="px-3.5 py-1 text-xs font-black tracking-wider uppercase rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 shadow-sm flex items-center gap-1.5 animate-pulse">
               <Play className="w-3.5 h-3.5 fill-current" />
               {slide.stageTag}
             </span>
             <div className="h-4 w-px bg-slate-700" />
-            <span className="text-xs text-slate-300 font-medium">Transição Apresentação → Produto Real</span>
+            <span className="text-xs text-slate-300 font-medium">Demonstração ao Vivo</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono text-[#00b0ff] bg-[#0c326f]/70 px-2.5 py-1 rounded border border-[#2684ff]/30 flex items-center gap-1.5">
-              <Monitor className="w-3.5 h-3.5" />
-              Ambiente de Produção
-            </span>
-          </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsEditingUrl(!isEditingUrl);
+            }}
+            className="text-[11px] text-slate-400 hover:text-[#fbbf24] flex items-center gap-1 transition-colors"
+            title="Configurar URL"
+          >
+            <Settings className="w-3 h-3" />
+            <span>{isEditingUrl ? 'Salvar' : 'Configurar URL'}</span>
+          </button>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mt-2">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
           {slide.title}
         </h1>
         {slide.subtitle && (
-          <p className="text-base sm:text-lg text-slate-300 mt-1 font-normal max-w-3xl">
+          <p className="text-lg sm:text-xl text-[#fbbf24] mt-2 font-bold max-w-3xl">
             {slide.subtitle}
           </p>
         )}
+
+        {/* URL editor if active */}
+        {isEditingUrl && (
+          <div className="mt-3 p-3 rounded-xl bg-slate-950 border border-slate-700 max-w-xl" onClick={(e) => e.stopPropagation()}>
+            <label className="text-[10px] text-slate-400 block mb-1 uppercase font-bold">
+              URL da Plataforma:
+            </label>
+            <input
+              type="url"
+              value={platformUrl}
+              onChange={(e) => setPlatformUrl(e.target.value)}
+              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#2684ff]"
+            />
+          </div>
+        )}
       </motion.div>
 
-      {/* Main Grid: Left Side 4 Step Reveals | Right Side Live Action Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-6">
-        {/* Left Column (lg:col-span-7): The 4 Step Preparation Walkthrough */}
-        <div className="lg:col-span-7 flex flex-col justify-between space-y-3">
-          {/* Initial State Banner when revealedCount === 0 */}
-          {revealedCount === 0 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-[#0c326f]/90 via-[#071d41]/95 to-[#030d1d]/95 border-2 border-[#2684ff] shadow-2xl flex flex-col justify-center items-center text-center space-y-4 my-auto"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-[#1351b4] border border-[#00b0ff]/60 flex items-center justify-center text-[#00b0ff] shadow-lg shadow-[#1351b4]/60">
-                <Play className="w-8 h-8 fill-current ml-1" />
-              </div>
-              <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#00b0ff] bg-slate-950/70 px-3 py-1 rounded-full border border-[#2684ff]/40">
-                  ETAPA 04
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-white mt-2">
-                  DEMONSTRAÇÃO AO VIVO
-                </h2>
-                <p className="text-lg text-[#00b0ff] font-semibold mt-1">
-                  "Agora vamos ver o produto funcionando."
-                </p>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-md">
-                Pressione <kbd className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[#00b0ff] font-mono">Espaço</kbd> ou clique para avançar o roteiro e abrir a plataforma.
-              </p>
-            </motion.div>
-          )}
-
-          {/* Steps 1 to 4 */}
-          {slide.topics.map((topic, index) => {
-            const isRevealed = revealedCount > index;
-            const isCurrentlyActive = revealedCount === index + 1;
-
-            if (revealedCount === 0) return null;
-
+      {/* Main Visual Bridge Container */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mb-6">
+        {/* Left Column (lg:col-span-7): The 5 Clean Steps (1 ↓ 2 ↓ 3 ↓ 4 ↓ 5) */}
+        <div className="lg:col-span-7 flex flex-col space-y-2.5">
+          {stepsList.map((step, idx) => {
+            const Icon = step.icon;
             return (
-              <motion.div
-                key={topic.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.35, delay: index * 0.06 }}
-                onClick={() => onItemClick && onItemClick(index + 1)}
-                className={`rounded-2xl p-4 sm:p-5 transition-all duration-300 cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
-                  isCurrentlyActive
-                    ? 'bg-gradient-to-r from-[#0c326f] via-[#071d41] to-[#0c326f] border-2 border-[#00b0ff] shadow-xl shadow-[#0c326f]/70 ring-2 ring-[#00b0ff]/30'
-                    : isRevealed
-                    ? 'bg-gradient-to-r from-[#071d41]/90 to-[#030d1d]/90 border border-[#1351b4]/60 shadow-md hover:border-[#2684ff]/50'
-                    : 'bg-[#071d41]/30 border border-slate-800/80 opacity-50 hover:opacity-80'
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-sm flex-shrink-0 ${
-                      isCurrentlyActive
-                        ? 'bg-[#00b0ff] text-slate-950 font-black shadow-md'
-                        : isRevealed
-                        ? 'bg-[#1351b4] text-white'
-                        : 'bg-slate-800 text-slate-400'
-                    }`}
-                  >
-                    {topic.number}
+              <React.Fragment key={idx}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.35, delay: idx * 0.08 }}
+                  className="flex items-center gap-4 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-[#0c326f]/70 via-[#071d41]/80 to-[#030d1d]/80 border border-[#1351b4]/50 shadow-md"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#fbbf24] text-slate-950 font-black text-base flex items-center justify-center flex-shrink-0 shadow-md">
+                    {step.num}
                   </div>
 
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
-                        {topic.number} — {topic.title}
-                      </h3>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-                        {topic.badge}
-                      </span>
-                    </div>
-
-                    <AnimatePresence mode="wait">
-                      {isRevealed ? (
-                        <motion.p
-                          key="revealed"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="text-xs sm:text-sm text-slate-200 mt-1 font-normal leading-relaxed"
-                        >
-                          "{topic.explanation}"
-                        </motion.p>
-                      ) : (
-                        <p className="text-xs text-slate-400 mt-1">
-                          Clique ou pressione Espaço para revelar
-                        </p>
-                      )}
-                    </AnimatePresence>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-300">
+                      {step.desc}
+                    </p>
                   </div>
-                </div>
 
-                <div className="p-2 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-400 self-end sm:self-center flex-shrink-0">
-                  <DynamicIcon name={topic.iconName} className="w-5 h-5" />
-                </div>
-              </motion.div>
+                  <div className="p-2 rounded-xl bg-slate-900/60 text-emerald-400 flex-shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                </motion.div>
+
+                {/* Arrow downward between steps */}
+                {idx < stepsList.length - 1 && (
+                  <div className="flex justify-center -my-1 text-[#2684ff] opacity-60">
+                    ↓
+                  </div>
+                )}
+              </React.Fragment>
             );
           })}
         </div>
 
-        {/* Right Column (lg:col-span-5): Big Call to Action & Live Product Bridge */}
-        <div className="lg:col-span-5 flex flex-col justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.45 }}
-            className={`h-full rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 border ${
-              isFinalDemoActive
-                ? 'bg-gradient-to-b from-[#0c326f] via-[#071d41] to-[#030d1d] border-2 border-[#00b0ff] shadow-2xl shadow-[#1351b4]/70 ring-4 ring-[#00b0ff]/20'
-                : 'bg-gradient-to-b from-[#071d41]/80 to-[#030d1d]/90 border-[#1351b4]/50 shadow-xl'
-            }`}
-          >
-            {/* Header of the Live Demo Bridge */}
-            <div>
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-800/80">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                  <h3 className="text-xs font-black uppercase tracking-wider text-slate-200">
-                    {isFinalDemoActive ? 'Pronto para a Demonstração' : 'Ponte com a Aplicação'}
-                  </h3>
-                </div>
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsEditingUrl(!isEditingUrl);
-                  }}
-                  className="text-[11px] text-slate-400 hover:text-[#00b0ff] flex items-center gap-1 transition-colors"
-                  title="Configurar URL da plataforma"
-                >
-                  <Settings className="w-3 h-3" />
-                  <span>{isEditingUrl ? 'Salvar' : 'URL'}</span>
-                </button>
-              </div>
-
-              {/* URL bar editor if toggled */}
-              {isEditingUrl && (
-                <div className="mb-4 p-3 rounded-xl bg-slate-950 border border-slate-700" onClick={(e) => e.stopPropagation()}>
-                  <label className="text-[10px] text-slate-400 block mb-1 uppercase font-bold">
-                    URL da Plataforma Adeus Multa:
-                  </label>
-                  <input
-                    type="url"
-                    value={platformUrl}
-                    onChange={(e) => setPlatformUrl(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#00b0ff]"
-                  />
-                </div>
-              )}
-
-              {/* Main Callout Banner */}
-              <div className="p-4 rounded-2xl bg-slate-950/70 border border-[#2684ff]/30 mb-5">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#00b0ff]">
-                  Ação ao Vivo no Google Meet
-                </span>
-                <h4 className="text-lg sm:text-xl font-extrabold text-white mt-1 leading-tight">
-                  {isFinalDemoActive
-                    ? 'AGORA É DEMONSTRAÇÃO AO VIVO'
-                    : 'Apresentação como ponte para o produto'}
-                </h4>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  {isFinalDemoActive
-                    ? 'Abra a aplicação na nova aba e demonstre o onboarding e análise em 3 minutos.'
-                    : 'O apresentador sairá temporariamente desta aba para interagir com o fluxo real.'}
-                </p>
-              </div>
-
-              {/* Suggested Sequence Guide: 01 to 05 */}
-              <div className="space-y-2 mb-6">
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                  <Eye className="w-3 h-3 text-[#00b0ff]" />
-                  Sequência Sugerida na Demo (3 a 5 min):
-                </span>
-                <div className="grid grid-cols-1 gap-1.5">
-                  {demoSequence.map((step, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#071d41]/60 border border-slate-800/80 text-xs"
-                    >
-                      <span className="text-[11px] font-mono font-bold text-[#2684ff]">
-                        {step.num}
-                      </span>
-                      <span className="font-bold text-slate-200">{step.step}:</span>
-                      <span className="text-slate-400 text-[11px] truncate">{step.desc}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        {/* Right Column (lg:col-span-5): Big Action Button & Transition Note */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45 }}
+          className="lg:col-span-5 flex flex-col justify-center"
+        >
+          <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-[#0c326f] via-[#071d41] to-[#030d1d] border-2 border-[#2684ff] shadow-2xl space-y-6">
+            <div className="space-y-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#fbbf24] bg-slate-950/80 px-3 py-1 rounded-full border border-[#fbbf24]/30">
+                Ponte para a Demonstração
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                Vamos ver o produto em ação
+              </h2>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Clique no botão abaixo para abrir a aplicação e acompanhar o fluxo da notificação até a defesa pronta.
+              </p>
             </div>
 
-            {/* Big Action Buttons */}
-            <div className="space-y-3 pt-2">
-              <button
-                id="btn-open-platform"
-                onClick={handleOpenPlatform}
-                className={`w-full py-4 px-6 rounded-2xl font-black text-base sm:text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-2xl ${
-                  isFinalDemoActive
-                    ? 'bg-gradient-to-r from-[#1351b4] via-[#2684ff] to-[#00b0ff] text-white hover:brightness-110 shadow-[#1351b4]/80 scale-[1.02] ring-2 ring-white/20 active:scale-[0.99]'
-                    : 'bg-[#1351b4] hover:bg-[#2684ff] text-white shadow-lg'
-                }`}
-              >
-                <span>ABRIR O ADEUS MULTA</span>
-                <ExternalLink className="w-5 h-5 font-bold stroke-[2.5]" />
-              </button>
+            {/* Giant CTA Button */}
+            <button
+              id="btn-open-platform"
+              onClick={handleOpenPlatform}
+              className="w-full py-5 px-6 rounded-2xl font-black text-lg sm:text-xl flex items-center justify-center gap-3 bg-[#fbbf24] hover:bg-[#f59e0b] text-slate-950 transition-all duration-300 shadow-2xl shadow-[#fbbf24]/30 hover:scale-[1.02] active:scale-[0.99] cursor-pointer"
+            >
+              <span>ABRIR O ADEUS MULTA</span>
+              <ExternalLink className="w-6 h-6 stroke-[3]" />
+            </button>
 
-              {/* Instructions on returning to presentation */}
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <ArrowLeft className="w-4 h-4 text-[#00b0ff]" />
-                  <span>
-                    Após a demo: <strong className="text-white">Volte para esta aba</strong>
-                  </span>
-                </div>
-                <span className="text-[11px] text-slate-400">Pressione Espaço para o Negócio</span>
+            {/* Return note */}
+            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
+              <div className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4 text-[#fbbf24]" />
+                <span>
+                  Após a demo: <strong className="text-white">Volte para esta aba</strong>
+                </span>
               </div>
+              <span className="text-[11px] text-emerald-400 font-bold">Avançar para Etapa 5</span>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Bottom Returning Banner */}
+      {/* Return banner after opening */}
       {hasOpenedDemo && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-emerald-200"
+          className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-emerald-200"
         >
           <div className="flex items-center gap-2.5">
             <CheckCircle2 className="w-5 h-5 text-emerald-400" />
             <span>
-              <strong>Demonstração iniciada em nova aba!</strong> Ao finalizar, retorne para esta tela para continuar a consultoria de negócios.
+              <strong>Demonstração aberta!</strong> Ao concluir a demonstração prática, retorne aqui para o plano de validação.
             </span>
           </div>
           <button
-            onClick={() => onItemClick && onItemClick(5)}
-            className="px-4 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold hover:bg-emerald-400 transition-colors flex items-center gap-1.5 flex-shrink-0 text-xs"
+            onClick={() => onItemClick && onItemClick(1)}
+            className="px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-black hover:bg-emerald-400 transition-colors flex items-center gap-1.5 flex-shrink-0 text-xs"
           >
-            <span>Continuar para Etapa 5 (Negócio)</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Ir para Etapa 5 (O Negócio)</span>
+            <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
           </button>
         </motion.div>
       )}
     </div>
   );
 };
+

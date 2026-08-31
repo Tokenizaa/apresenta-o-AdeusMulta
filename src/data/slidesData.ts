@@ -4,317 +4,334 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 0,
     stageNumber: "00",
-    stageTag: "ABERTURA INSTITUCIONAL",
+    stageTag: "ADEUS MULTA",
     title: "ADEUS MULTA",
-    subtitle: "Tecnologia para análise e defesa administrativa de infrações de trânsito",
+    subtitle: "Tecnologia para análise e defesa de infrações de trânsito",
     topics: [
       {
         id: "c1",
         number: "01",
         title: "Motorista",
-        explanation: "Recebe o auto de autuação e busca clareza técnica e transparência.",
-        iconName: "Users",
-        badge: "Entrada Cidadã"
+        explanation: "Recebe a autuação e quer saber se existe algum erro ou motivo para recorrer.",
+        iconName: "User",
+        badge: "Início"
       },
       {
         id: "c2",
         number: "02",
-        title: "Documentos & Fatos",
-        explanation: "Digitalização e extração estruturada dos dados da notificação de autuação.",
-        iconName: "FileSearch",
-        badge: "Dados Estruturados"
+        title: "Documentos",
+        explanation: "Informa os dados da multa e anexa a notificação recebida.",
+        iconName: "FileText",
+        badge: "Dados"
       },
       {
         id: "c3",
         number: "03",
-        title: "Análise Determinística",
-        explanation: "Cruzamento com a Knowledge Base e motor de regras de trânsito.",
-        iconName: "Cpu",
-        badge: "Rule Engine"
+        title: "Conferência",
+        explanation: "O sistema confere os fatos com a legislação e as regras do Código de Trânsito.",
+        iconName: "CheckSquare",
+        badge: "Regras"
       },
       {
         id: "c4",
         number: "04",
-        title: "Defesa Administrativa",
-        explanation: "Composição documental técnica e formal para o órgão de trânsito.",
+        title: "Defesa",
+        explanation: "Gera o documento de defesa com base nos fundamentos encontrados.",
         iconName: "FileCheck",
-        badge: "Peça Pronta"
+        badge: "Resultado"
       }
     ],
-    highlightQuote: "Transformando complexidade jurídica em uma experiência digital simples.",
+    highlightQuote: "Primeiro verificamos as regras. Depois geramos a defesa.",
     presenterNotes: {
-      objective: "Abrir a consultoria do Sebrae posicionando o Adeus Multa como uma GovTech/LegalTech de impacto real.",
+      objective: "Apresentar o Adeus Multa de forma direta e prática para a consultora do Sebrae.",
       talkingPoints: [
-        "Apresentar a missão do projeto: democratizar o acesso à análise técnica do auto de infração.",
-        "Ressaltar que construímos uma tecnologia sólida que transforma burocracia em fluxo digital intuitivo.",
-        "Explicar a dinâmica da apresentação: 5 etapas objetivas para focar na modelagem de negócio com o Sebrae."
+        "Explicar a proposta: ajudar o motorista a conferir se sua multa tem erros antes de apresentar uma defesa.",
+        "Ressaltar que a tecnologia já está construída e funcionando.",
+        "Explicar que a apresentação tem 5 etapas rápidas para irmos direto ao plano de negócio."
       ],
-      sebraeFocus: "Transmitir maturidade institucional, seriedade tecnológica e clareza do escopo de atuação."
+      sebraeFocus: "Mostrar maturidade, simplicidade de comunicação e foco total em validar o negócio."
     }
   },
   {
     id: 1,
     stageNumber: "01",
     stageTag: "ETAPA 1 — O PROBLEMA",
-    title: "O problema que queremos resolver",
-    subtitle: "A assimetria de informação e a complexidade burocrática enfrentada pelo cidadão",
+    title: "Recebeu uma multa. E agora?",
+    subtitle: "A maioria das pessoas não sabe se a autuação tem algum erro que pode ser questionado.",
     topics: [
       {
         id: "p1",
         number: "01",
-        title: "Multas geram dúvidas",
-        explanation: "Muitas pessoas recebem uma multa, mas não sabem identificar se existem erros, inconsistências ou circunstâncias relevantes para uma defesa.",
+        title: "É difícil saber se a multa está correta",
+        explanation: "Existem informações, prazos e requisitos que precisam ser conferidos.",
         iconName: "HelpCircle",
-        badge: "Insegurança Técnica"
+        badge: "Dúvida do Motorista"
       },
       {
         id: "p2",
         number: "02",
-        title: "Informação jurídica é complexa",
-        explanation: "Legislação, prazos, procedimentos e requisitos tornam difícil avaliar uma autuação sem conhecimento especializado.",
-        iconName: "Scale",
-        badge: "Complexidade Legal"
+        title: "Nem todo problema aparece à primeira vista",
+        explanation: "Um erro de preenchimento, procedimento, sinalização ou documentação pode ser relevante para a defesa.",
+        iconName: "AlertTriangle",
+        badge: "Exigências Técnicas"
       },
       {
         id: "p3",
         number: "03",
-        title: "O motorista não sabe por onde começar",
-        explanation: "Antes de escrever uma defesa, é necessário entender os fatos, os documentos e quais fundamentos realmente podem ser aplicáveis.",
+        title: "O motorista geralmente não sabe como começar",
+        explanation: "Ele precisa entender a autuação antes de decidir se vale a pena apresentar uma defesa.",
         iconName: "Compass",
-        badge: "Falta de Orientação"
+        badge: "Falta de Clareza"
       }
     ],
     presenterNotes: {
-      objective: "Demonstrar a dor de mercado: o cidadão comum não consegue analisar tecnicamente seu auto de infração.",
+      objective: "Mostrar a dúvida real que todo motorista tem ao receber uma notificação de trânsito.",
       talkingPoints: [
-        "A dor primária ocorre antes da redação da defesa: saber se o auto possui consistência formal.",
-        "A legislação (CTB, Resoluções CONTRAN) é densa e mutável.",
-        "Existe um vácuo entre soluções caras presenciais e modelos genéricos ineficazes na internet."
+        "O problema não é só escrever a defesa: é saber se existe algo errado na autuação.",
+        "A legislação tem centenas de regras e prazos que o cidadão não conhece.",
+        "Hoje o motorista fica perdido entre modelos genéricos da internet e serviços caros."
       ],
-      sebraeFocus: "Validar a relevância da dor e a oportunidade latente em um mercado de dezenas de milhões de autuações anuais."
+      sebraeFocus: "Validar que o problema afeta milhões de motoristas e frotas em todo o Brasil."
     }
   },
   {
     id: 2,
     stageNumber: "02",
     stageTag: "ETAPA 2 — A SOLUÇÃO",
-    title: "O que é o Adeus Multa?",
-    subtitle: "Fluxo digital estruturado de ponta a ponta para análise e geração da peça administrativa",
+    title: "O Adeus Multa faz essa análise",
+    subtitle: "Do envio da notificação até a montagem da defesa administrativa",
     topics: [
       {
         id: "s1",
         number: "01",
-        title: "DADOS",
-        explanation: "O usuário informa os dados da infração e apresenta os documentos disponíveis.",
-        iconName: "FileSearch",
-        badge: "Entrada Digital"
+        title: "INFORMAR",
+        explanation: "O motorista informa os dados da multa.",
+        iconName: "Edit3",
+        badge: "Passo 1"
       },
       {
         id: "s2",
         number: "02",
-        title: "ANÁLISE",
-        explanation: "O sistema cruza os fatos com uma base jurídica estruturada e regras determinísticas.",
-        iconName: "Cpu",
-        badge: "Motor de Regras"
+        title: "ENVIAR",
+        explanation: "Apresenta o auto de infração e outros documentos disponíveis.",
+        iconName: "Upload",
+        badge: "Passo 2"
       },
       {
         id: "s3",
         number: "03",
-        title: "FUNDAMENTOS",
-        explanation: "São identificados possíveis fundamentos compatíveis com os dados disponíveis.",
-        iconName: "GitMerge",
-        badge: "Verificação Legal"
+        title: "CONFERIR",
+        explanation: "O sistema verifica os fatos informados contra regras e informações jurídicas cadastradas.",
+        iconName: "CheckCircle2",
+        badge: "Passo 3"
       },
       {
         id: "s4",
         number: "04",
-        title: "DEFESA",
-        explanation: "Os fatos, fundamentos e pedidos são organizados em um documento de defesa administrativa.",
-        iconName: "FileText",
-        badge: "Document Assembly"
+        title: "IDENTIFICAR",
+        explanation: "Quando existem elementos compatíveis, o sistema identifica os possíveis fundamentos da defesa.",
+        iconName: "Search",
+        badge: "Passo 4"
+      },
+      {
+        id: "s5",
+        number: "05",
+        title: "GERAR",
+        explanation: "A defesa é montada com base nas informações encontradas.",
+        iconName: "FileCheck",
+        badge: "Passo 5"
       }
     ],
-    highlightQuote: "A IA atua como camada de enriquecimento e refinamento da linguagem. Ela não é a fonte de verdade jurídica nem escolhe livremente a tese.",
+    highlightQuote: "A inteligência artificial melhora o texto, mas não decide qual argumento jurídico usar.",
     presenterNotes: {
-      objective: "Apresentar a pipeline do produto com ênfase na segurança e no papel controlado da Inteligência Artificial.",
+      objective: "Mostrar o caminho simples de 5 passos da plataforma.",
       talkingPoints: [
-        "O fluxo é 100% estruturado em 4 fases: Dados -> Análise -> Fundamentos -> Defesa.",
-        "A IA nunca inventa leis ou teses: seu papel é polir a linguagem formal e a concisão da defesa.",
-        "Não prometemos anulação mágica; oferecemos rigor técnico na análise dos fatos e prazos."
+        "Fluxo: Multa → Documentos → Conferência → Fundamentos → Defesa.",
+        "Apresentar a frase-chave: a IA organiza o texto, mas quem confere o direito são as regras cadastradas.",
+        "Não prometemos anulação automática, entregamos uma análise técnica honesta."
       ],
-      sebraeFocus: "Demonstrar a proposta de valor transparente, sem riscos éticos ou regulatórios."
+      sebraeFocus: "Demonstrar a proposta de valor clara e sem promessas mirabolantes."
     }
   },
   {
     id: 3,
     stageNumber: "03",
-    stageTag: "ETAPA 3 — O DIFERENCIAL",
-    title: "Não é apenas um chatbot jurídico",
-    subtitle: "Arquitetura com governança, determinismo e validação contra alucinação",
+    stageTag: "ETAPA 3 — O QUE EXISTE POR TRÁS",
+    title: "Não é simplesmente pedir para uma IA escrever uma defesa",
+    subtitle: "Como o sistema garante que cada argumento seja baseado em regras reais",
     topics: [
       {
         id: "d1",
         number: "01",
-        title: "Knowledge Base",
-        explanation: "Conhecimento jurídico estruturado por infrações, argumentos, procedimentos e regras.",
-        iconName: "Database",
-        badge: "Núcleo Jurídico"
+        title: "REGRAS",
+        explanation: "O sistema verifica condições objetivas antes de considerar um fundamento.",
+        iconName: "CheckSquare",
+        badge: "Critérios Objetivos"
       },
       {
         id: "d2",
         number: "02",
-        title: "Rule Engine",
-        explanation: "Regras determinísticas para situações que podem ser verificadas objetivamente.",
-        iconName: "GitMerge",
-        badge: "Lógica Estrita"
+        title: "LEGISLAÇÃO",
+        explanation: "As regras jurídicas ficam organizadas para serem consultadas conforme o caso.",
+        iconName: "BookOpen",
+        badge: "Código de Trânsito"
       },
       {
         id: "d3",
         number: "03",
-        title: "Validation",
-        explanation: "Validação de integridade para impedir argumentos sem base jurídica ou conhecimento inconsistente.",
-        iconName: "ShieldAlert",
-        badge: "FAIL CLOSED"
+        title: "DATA",
+        explanation: "Uma regra pode depender da data em que a infração aconteceu.",
+        iconName: "Calendar",
+        badge: "Linha do Tempo"
       },
       {
         id: "d4",
         number: "04",
-        title: "Document Assembly",
-        explanation: "Composição documental baseada nos fatos e fundamentos efetivamente identificados.",
-        iconName: "FileCheck",
-        badge: "Compositor Formal"
+        title: "DOCUMENTOS",
+        explanation: "Os documentos apresentados pelo motorista fazem parte da análise.",
+        iconName: "FileSearch",
+        badge: "Conferência Real"
       },
       {
         id: "d5",
         number: "05",
         title: "IA",
-        explanation: "Refinamento da linguagem sem substituir o núcleo determinístico.",
+        explanation: "A inteligência artificial ajuda a organizar e melhorar o texto. Ela não pode inventar fundamento jurídico.",
         iconName: "Sparkles",
-        badge: "Camada de Texto"
+        badge: "Redação Clara"
       }
     ],
-    highlightQuote: "A IA escreve melhor. O sistema determina aplicabilidade com regras e conhecimento estruturado.",
+    highlightQuote: "Primeiro verificamos. Depois escrevemos.",
     presenterNotes: {
-      objective: "Destacar a barreira de entrada e a diferença brutal entre um GPT livre e um software com regras determinísticas.",
+      objective: "Explicar por que nossa solução é diferente de um ChatGPT comum.",
       talkingPoints: [
-        "Chatbots genéricos falham em direito de trânsito por falta de controle de validade temporal e precisão factual.",
-        "O Adeus Multa implementa o conceito de FAIL CLOSED: na ausência de certeza documental, não inventa respostas.",
-        "A base é estruturada e versionada de acordo com as normas oficiais dos órgãos executivos de trânsito."
+        "Um chatbot genérico inventa leis e comete erros graves.",
+        "Nosso sistema organiza a legislação, confere prazos e datas, e só depois usa IA para redigir.",
+        "Frase de efeito: Primeiro verificamos. Depois escrevemos."
       ],
-      sebraeFocus: "Expor a defensabilidade técnica do produto e a robustez da engenharia desenvolvida."
+      sebraeFocus: "Mostrar que existe tecnologia própria e barreira de proteção no produto."
     }
   },
   {
     id: 4,
     stageNumber: "04",
-    stageTag: "ETAPA 4 — DEMONSTRAÇÃO AO VIVO",
-    title: "Vamos sair da apresentação e entrar no produto",
-    subtitle: "Demonstração real do Adeus Multa",
+    stageTag: "ETAPA 4 — DEMONSTRAÇÃO REAL",
+    title: "Agora vamos ver o sistema funcionando",
+    subtitle: "Da multa até a defesa.",
     topics: [
       {
         id: "demo1",
         number: "01",
-        title: "Abrir a plataforma",
-        explanation: "Vamos sair da apresentação e entrar na experiência real do usuário.",
-        iconName: "ExternalLink",
-        badge: "Acesso Real"
+        title: "Dados da multa",
+        explanation: "Entrada das informações do auto de infração e do condutor.",
+        iconName: "Edit3",
+        badge: "1. Entrada"
       },
       {
         id: "demo2",
         number: "02",
-        title: "Mostrar o onboarding",
-        explanation: "Aqui começa a jornada do usuário.",
-        iconName: "UserCheck",
-        badge: "Onboarding"
+        title: "Documentos",
+        explanation: "Envio da notificação e conferência dos registros.",
+        iconName: "Upload",
+        badge: "2. Documentos"
       },
       {
         id: "demo3",
         number: "03",
-        title: "Mostrar a análise",
-        explanation: "O sistema transforma os dados da infração em uma análise estruturada.",
-        iconName: "Cpu",
-        badge: "Análise Estruturada"
+        title: "Análise",
+        explanation: "Conferência automática das regras e prazos legais.",
+        iconName: "CheckCircle2",
+        badge: "3. Análise"
       },
       {
         id: "demo4",
         number: "04",
-        title: "Mostrar a geração da defesa",
-        explanation: "O resultado é transformado em um documento de defesa.",
+        title: "Fundamentos encontrados",
+        explanation: "Identificação dos pontos que podem ser questionados.",
+        iconName: "Search",
+        badge: "4. Fundamentos"
+      },
+      {
+        id: "demo5",
+        number: "05",
+        title: "Defesa",
+        explanation: "Geração da peça completa pronta para impressão ou protocolo.",
         iconName: "FileCheck",
-        badge: "Peça Formal"
+        badge: "5. Defesa"
       }
     ],
-    highlightQuote: "AGORA É DEMONSTRAÇÃO AO VIVO",
+    highlightQuote: "AGORA VAMOS PARA A PLATAFORMA",
     presenterNotes: {
-      objective: "Sair dos slides e abrir o Adeus Multa em nova aba para demonstrar o fluxo real e objetivo.",
+      objective: "Abrir a plataforma ao vivo em nova aba e demonstrar o funcionamento em 3 a 5 minutos.",
       talkingPoints: [
-        "1. Clicar em 'ABRIR PLATAFORMA' para abrir a aplicação real em nova aba.",
-        "2. Mostrar o onboarding e inserir ou selecionar um caso demonstrativo de infração.",
-        "3. Exibir a análise determinística cruzando os fatos com as regras do CTB.",
-        "4. Mostrar os fundamentos identificados e a geração do documento final.",
-        "5. Concluir a demo em 3-5 minutos e voltar para esta aba para a etapa de negócio."
+        "1. Clicar em 'ABRIR O ADEUS MULTA' para ir para a aplicação real.",
+        "2. Fazer um teste rápido com uma infração demonstrativa.",
+        "3. Mostrar a conferência das regras e o documento final gerado.",
+        "4. Voltar para esta aba para discutir o modelo de negócio."
       ],
-      sebraeFocus: "Comprovar a solidez e sofisticação do produto real em poucos minutos antes de estruturar o plano comercial."
+      sebraeFocus: "Provar que a tecnologia já é realidade antes de debater a estratégia comercial."
     }
   },
   {
     id: 5,
     stageNumber: "05",
-    stageTag: "ETAPA 5 — O NEGÓCIO",
-    title: "A tecnologia existe. Agora precisamos validar o negócio.",
-    subtitle: "Os 5 eixos prioritários para a sessão de consultoria e tomada de decisão estratégica",
+    stageTag: "ETAPA 5 — O QUE PRECISAMOS VALIDAR",
+    title: "A tecnologia está pronta. Agora precisamos testar o negócio.",
+    subtitle: "As cinco perguntas centrais para construirmos o plano de ação com o Sebrae",
     topics: [
       {
         id: "sb1",
         number: "01",
-        title: "PÚBLICO",
-        explanation: "Quem deve ser nosso primeiro cliente?",
+        title: "QUEM?",
+        explanation: "Quem tem maior interesse em pagar por esse serviço?",
         iconName: "Users",
-        badge: "ICP / Segmentação"
+        badge: "Primeiro Cliente"
       },
       {
         id: "sb2",
         number: "02",
-        title: "MERCADO",
-        explanation: "Existe demanda suficiente?",
-        iconName: "TrendingUp",
-        badge: "Validação de Demanda"
+        title: "QUANTO?",
+        explanation: "Quanto essa pessoa estaria disposta a pagar por uma defesa?",
+        iconName: "DollarSign",
+        badge: "Preço & Valor"
       },
       {
         id: "sb3",
         number: "03",
-        title: "MODELO",
-        explanation: "Como devemos monetizar?",
+        title: "COMO?",
+        explanation: "É melhor vender diretamente para o motorista ou por meio de parceiros?",
         iconName: "Building2",
-        badge: "Monetização / B2C / B2B"
+        badge: "Modelo de Venda"
       },
       {
         id: "sb4",
         number: "04",
-        title: "PREÇO",
-        explanation: "Quanto o mercado está disposto a pagar?",
-        iconName: "DollarSign",
-        badge: "Precificação & Elasticidade"
+        title: "ONDE?",
+        explanation: "Onde podemos encontrar os primeiros clientes?",
+        iconName: "Target",
+        badge: "Canais de Acesso"
       },
       {
         id: "sb5",
         number: "05",
-        title: "AQUISIÇÃO",
-        explanation: "Como conquistar os primeiros clientes?",
-        iconName: "Target",
-        badge: "Canais / Go-to-Market"
+        title: "O QUE TESTAR?",
+        explanation: "Qual é o menor teste que podemos fazer para descobrir se existe demanda real?",
+        iconName: "CheckSquare",
+        badge: "Teste de Demanda"
       }
     ],
-    closingQuestion: "O QUE VOCÊ FARIA NOS PRÓXIMOS 30 DIAS?",
+    closingQuestion: "Quero sair daqui com um plano de 30 dias.",
     closingTakeaway: "A tecnologia já existe. Agora queremos orientação para transformar essa tecnologia em um negócio validado, comercialmente sustentável e escalável.",
     presenterNotes: {
-      objective: "Abrir a conversa prática com a consultora do Sebrae usando as 5 perguntas e o plano de 30 dias.",
+      objective: "Conduzir a conversa final com a consultora do Sebrae e preencher os 3 passos práticos.",
       talkingPoints: [
-        "Passar pelos 5 pilares para orientar a sessão de 1 hora.",
-        "Passar a palavra para a consultora com a pergunta de impacto dos 30 dias.",
-        "Anotar as 3 principais prioridades diretamente na tela durante o diálogo."
+        "Passar pelas 5 perguntas como guia da conversa.",
+        "Apresentar a tela final: 'Quero sair daqui com um plano de 30 dias.'",
+        "Perguntar diretamente: 'O que você faria no meu lugar?'",
+        "Anotar as 3 respostas ao vivo durante a reunião."
       ],
-      sebraeFocus: "Sair da consultoria com os 3 primeiros passos práticos alinhados e validados pelo Sebrae."
+      sebraeFocus: "Sair da reunião com 3 decisões práticas: O que testar primeiro, Quem procurar e Quanto investir."
     }
   }
 ];
+

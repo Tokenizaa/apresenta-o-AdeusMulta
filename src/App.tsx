@@ -29,12 +29,12 @@ export default function App() {
   const getSlideTotalSteps = useCallback((slideIdx: number) => {
     const slide = SLIDES_DATA[slideIdx];
     if (!slide) return 0;
-    if (slide.id === 0) return 4;
-    if (slide.id === 1) return 3;
-    if (slide.id === 2) return 5; // 4 topics + 1 AI layer
-    if (slide.id === 3) return 6; // 5 topics + 1 conclusion banner
-    if (slide.id === 4) return 5; // 4 topics + 1 big live demo CTA
-    if (slide.id === 5) return 6; // 5 topics + 1 30-day closing board
+    if (slide.id === 0) return 4; // Cover: 4 key highlights
+    if (slide.id === 1) return 3; // Problem: 3 topics
+    if (slide.id === 2) return 5; // Solution: 5 steps
+    if (slide.id === 3) return 5; // Differential: 5 steps
+    if (slide.id === 4) return 1; // Live demo: 1 action
+    if (slide.id === 5) return 5; // Sebrae: 5 points
     return slide.topics.length;
   }, []);
 
