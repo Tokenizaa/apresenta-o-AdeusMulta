@@ -39,7 +39,7 @@ export const PresenterNotesModal: React.FC<PresenterNotesModalProps> = ({
               <div>
                 <h3 className="font-bold text-white text-base">Roteiro do Apresentador</h3>
                 <p className="text-xs text-slate-300">
-                  {slideIndex === 0 ? 'Capa de Abertura' : `Etapa 0${slideIndex} de 05`} • {slide.stageTag}
+                  {slideIndex === 0 ? 'Capa de Abertura' : `Etapa 0${slideIndex} de 0${totalSlides - 1}`} • {slide.stageTag}
                 </p>
               </div>
             </div>
