@@ -1,0 +1,7 @@
+{
+  "name": "Adeus Multa — Apresentação Sebrae",
+  "description": "Slide deck executivo interativo para apresentação do projeto Adeus Multa em consultoria do Sebrae.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
