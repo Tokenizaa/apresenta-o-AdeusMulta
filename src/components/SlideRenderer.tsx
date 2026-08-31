@@ -2,11 +2,9 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SlideData } from '../types/presentation';
 import { SlideCover } from './slides/SlideCover';
-import { SlideProblemSize } from './slides/SlideProblemSize';
-import { SlideMarketDemand } from './slides/SlideMarketDemand';
-import { SlideCompetitors } from './slides/SlideCompetitors';
-import { SlideDifferentiation } from './slides/SlideDifferentiation';
-import { SlideTechDifferential } from './slides/SlideTechDifferential';
+import { SlideProblem } from './slides/SlideProblem';
+import { SlideSolution } from './slides/SlideSolution';
+import { SlideDifferential } from './slides/SlideDifferential';
 import { SlideLiveDemo } from './slides/SlideLiveDemo';
 import { SlideSebraeQuestions } from './slides/SlideSebraeQuestions';
 
@@ -56,18 +54,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
       case 0:
         return <SlideCover slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
       case 1:
-        return <SlideProblemSize slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
+        return <SlideProblem slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
       case 2:
-        return <SlideMarketDemand slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
+        return <SlideSolution slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
       case 3:
-        return <SlideCompetitors slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
+        return <SlideDifferential slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
       case 4:
-        return <SlideDifferentiation slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
-      case 5:
-        return <SlideTechDifferential slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
-      case 6:
         return <SlideLiveDemo slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
-      case 7:
+      case 5:
         return <SlideSebraeQuestions slide={slide} revealedCount={revealedCount} onItemClick={onItemClick} />;
       default:
         return null;

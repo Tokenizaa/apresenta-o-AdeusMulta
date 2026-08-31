@@ -30,14 +30,12 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectSlide,
 }) => {
   const stageLabels = [
-    '00 Capa',
+    'Abertura',
     '01 Problema',
-    '02 Demanda',
-    '03 Concorrência',
-    '04 Diferencial',
-    '05 Tecnologia',
-    '06 Demo Ao Vivo',
-    '07 Gestão & Metas'
+    '02 Solução',
+    '03 Diferencial',
+    '04 Demo Ao Vivo',
+    '05 Negócio'
   ];
 
   return (
@@ -87,7 +85,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-1.5 flex items-center gap-1.5">
             <span className="text-slate-400">Etapa:</span>
             <span className="font-bold text-white tracking-wide">
-              {slideIndex === 0 ? 'Capa' : `0${slideIndex}`} <span className="text-slate-500">/</span> {`0${totalSlides - 1}`}
+              {slideIndex === 0 ? 'Capa' : `0${slideIndex}`} <span className="text-slate-500">/</span> 05
             </span>
           </div>
 

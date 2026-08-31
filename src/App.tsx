@@ -19,8 +19,6 @@ export default function App() {
     3: 0,
     4: 0,
     5: 0,
-    6: 0,
-    7: 0,
   });
 
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -32,13 +30,11 @@ export default function App() {
     const slide = SLIDES_DATA[slideIdx];
     if (!slide) return 0;
     if (slide.id === 0) return 4; // Cover: 4 key highlights
-    if (slide.id === 1) return 2; // Problem Size: 2 steps
-    if (slide.id === 2) return 4; // Market Demand: 4 steps
-    if (slide.id === 3) return 3; // Competitors: 3 models
-    if (slide.id === 4) return 4; // Differentiation: 4 steps
-    if (slide.id === 5) return 4; // Tech Differential: 4 pillars
-    if (slide.id === 6) return 1; // Live demo: 1 action
-    if (slide.id === 7) return 5; // Sebrae: 5 points
+    if (slide.id === 1) return 3; // Problem: 3 topics
+    if (slide.id === 2) return 5; // Solution: 5 steps
+    if (slide.id === 3) return 5; // Differential: 5 steps
+    if (slide.id === 4) return 1; // Live demo: 1 action
+    if (slide.id === 5) return 5; // Sebrae: 5 points
     return slide.topics.length;
   }, []);
 
@@ -157,8 +153,6 @@ export default function App() {
         case '3':
         case '4':
         case '5':
-        case '6':
-        case '7':
           e.preventDefault();
           handleSelectSlide(parseInt(e.key, 10));
           break;

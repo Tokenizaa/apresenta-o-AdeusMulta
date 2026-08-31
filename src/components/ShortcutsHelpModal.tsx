@@ -13,7 +13,7 @@ export const ShortcutsHelpModal: React.FC<ShortcutsHelpModalProps> = ({ isOpen, 
   const shortcuts = [
     { key: '→ / Espaço / Enter', desc: 'Avançar para o próximo elemento / revelar conteúdo' },
     { key: '← / Backspace', desc: 'Voltar para o elemento / passo anterior' },
-    { key: '0 - 7', desc: 'Pular diretamente para Capa (0) ou Etapas (1 a 7)' },
+    { key: '0 - 5', desc: 'Pular diretamente para Capa (0) ou Etapas (1 a 5)' },
     { key: 'F', desc: 'Alternar modo Tela Cheia / Apresentação' },
     { key: 'N', desc: 'Abrir / Fechar Roteiro do Apresentador (Notas Sebrae)' },
     { key: 'R', desc: 'Reiniciar o slide atual (reocultar explicações)' },
